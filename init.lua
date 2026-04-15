@@ -229,7 +229,27 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
+  {
+    'enrini/tidal.nvim',
+    opts = {
+      -- Your configuration here
+      -- See configuration section for defaults
+      highlight = {
+        styles = {
+          osc = {
+            ip = '127.0.0.1',
+            port = 6013,
+          },
+          global = { baseName = 'CodeHighlight', style = { bg = '#7eaefc', foreground = '#000000' } },
+        },
+      },
+    },
+    -- Recommended: Install TreeSitter parsers for Haskell and SuperCollider
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      opts = { ensure_installed = { 'haskell', 'supercollider' } },
+    },
+  },
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
